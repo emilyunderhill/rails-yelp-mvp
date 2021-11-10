@@ -1,7 +1,26 @@
 <h1><%= @restaurant.name %></h1>
-<%= link_to 'Back to list', restaurants_path %>
-<%= link_to 'Add review', new_restaurant_review_path(@restaurant) %>
-<%= link_to 'View reviews', restaurant_reviews_path(@restaurant) %>
 <h2>Contact</h2>
 <p>Address: <%= @restaurant.address %></p>
 <p>Tel: <strong><%= @restaurant.phone_number %></strong></p>
+
+<%= link_to 'Back to list', restaurants_path %>
+<div class="container bg-white p-3 mt-3">
+  <%= simple_form_for [@restaurant, @review] do |f| %>
+    <%= f.input :rating %>
+    <%= f.input :content %>
+    <%= f.submit 'Submit Review', class: "btn btn-primary"%>
+  <% end %>
+</div>
+
+<div class="container mt-3">
+  <h2>Reviews:</h2>
+  <ol>
+    <% @reviews.each do |review| %>
+    <li>
+      <h3>Rating: <%= review.rating %> / 5 </h3>
+      <p><%= review.content %></p>
+      <p>Created at: <%= review.created_at %></p>
+    </li>
+    <% end %>
+  </ol>
+</div>

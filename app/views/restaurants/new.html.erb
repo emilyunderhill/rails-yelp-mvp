@@ -1,9 +1,9 @@
 <h1>Add a restaurant</h1>
 <%= link_to 'Back to restaurants list', restaurants_path %>
-<%= form_for(@restaurant) do |f| %>
-  Name: <%= f.text_field :name %>
-  Address: <%= f.text_field :address %>
-  Phone number: <%= f.text_field :phone_number %>
-  Category: <%= f.select :category, %w[chinese italian japanese french belgian] %>
-  <%= f.submit %>
+<%= simple_form_for(@restaurant) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :address %>
+  <%= f.input :phone_number %>
+  <%= f.select :category, %w[chinese italian japanese french belgian] %>
+  <%= f.submit 'Submit Restaurant', class: "btn btn-primary"%>
 <% end %>

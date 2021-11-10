@@ -5,15 +5,22 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
-  def show; end
+  def show
+    @reviews = Review.where(restaurant_id: @restaurant.id)
+    @review = Review.new
+  end
 
   def new
     @restaurant = Restaurant.new
   end
 
   def create
-    @restaurant = Restaurant.create(restaurant_params)
-    redirect_to restaurant_path(@restaurant)
+    @restaurant = Restaurant.new(restaurant_params)
+    if @restaurant.save
+      redirect_to restaurant_path(@restaurant)
+    else
+      render 'new'
+    end
   end
 
   private
