@@ -5,22 +5,9 @@
 
 <%= link_to 'Back to list', restaurants_path %>
 <div class="container bg-white p-3 mt-3">
-  <%= simple_form_for [@restaurant, @review] do |f| %>
-    <%= f.input :rating %>
-    <%= f.input :content %>
-    <%= f.submit 'Submit Review', class: "btn btn-primary"%>
-  <% end %>
+  <%= render 'reviews/new' %>
 </div>
 
 <div class="container mt-3">
-  <h2>Reviews:</h2>
-  <ol>
-    <% @reviews.each do |review| %>
-    <li>
-      <h3>Rating: <%= review.rating %> / 5 </h3>
-      <p><%= review.content %></p>
-      <p>Created at: <%= review.created_at %></p>
-    </li>
-    <% end %>
-  </ol>
+  <%= render 'reviews/index' %>
 </div>

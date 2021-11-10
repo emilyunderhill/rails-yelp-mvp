@@ -1,6 +1,11 @@
 class ReviewsController < ApplicationController
   before_action :set_restaurant
 
+  def new
+    @review = Review.new
+    @review.restaurant = @restaurant
+  end
+
   def create
     @review = Review.new(review_params)
     @review.restaurant = @restaurant
@@ -8,7 +13,7 @@ class ReviewsController < ApplicationController
     if @review.save
       redirect_to restaurant_path(@restaurant)
     else
-      render 'restaurants/show'
+      render 'new'
     end
   end
 
