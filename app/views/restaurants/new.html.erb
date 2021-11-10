@@ -1,1 +1,7 @@
 <%= form_for(@restaurant) do |f| %>
+  Name: <%= f.text_field :name %>
+  Address: <%= f.text_field :address %>
+  Phone number: <%= f.text_field :phone_number %>
+  Category: <%= f.select :category, %w[chinese italian japanese french belgian] %>
+  <%= f.submit %>
+<% end %>
