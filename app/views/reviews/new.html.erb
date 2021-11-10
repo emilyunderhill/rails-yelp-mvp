@@ -1,3 +1,6 @@
+<h1>Add a review for <%= @restaurant.name %></h1>
+<%= link_to "Back to #{@restaurant.name}", restaurant_path(@restaurant) %>
+<%= link_to 'Back to restaurants list', restaurants_path %>
 <%= form_for [@restaurant, @review] do |f| %>
   Rating (1-5): <%= f.number_field :rating %>
   Comments: <%= f.text_area :content %>
